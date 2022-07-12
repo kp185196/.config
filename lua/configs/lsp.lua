@@ -2,6 +2,7 @@ local fn = vim.fn
 local api = vim.api
 local lsp = vim.lsp
 
+local cmd = vim.cmd -- execute Vim commands
 local utils = require("utils")
 
 -- Setup installer & lsp configs
@@ -201,6 +202,10 @@ lspconfig.eslint.setup {
     capabilities = capabilities,
     settings = require('configs.lsp.eslint').settings,
 }
+lspconfig.rust_analyzer.setup {
+    on_attach = custom_attach,
+    capabilities = capabilities,
+}
 
 lspconfig.jsonls.setup {
     on_attach = custom_attach,
@@ -224,10 +229,6 @@ lspconfig.tsserver.setup {
     handlers = handlers
 }
 
-lspconfig.rust_analyzer.setup {
-    on_attach = custom_attach,
-    capabilities = capabilities,
-}
 
 
 lspconfig.html.setup {
@@ -254,3 +255,39 @@ lsp.handlers["textDocument/publishDiagnostics"] = lsp.with(lsp.diagnostic.on_pub
     signs = true,
     update_in_insert = false,
 })
+
+cmd("set completeopt=menuone,noinsert,noselect")
+cmd("set shortmess+=c")
+
+
+local opts = {
+    tools = { -- rust-tools options
+        autoSetHints = true,
+        hover_with_actions = true,
+        inlay_hints = {
+            show_parameter_hints = false,
+            parameter_hints_prefix = "",
+            other_hints_prefix = "",
+        },
+    },
+
+    -- all the opts to send to nvim-lspconfig
+    -- these override the defaults set by rust-tools.nvim
+    -- see https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rust_analyzer
+    server = {
+        -- on_attach is a callback called when the language server attachs to the buffer
+        -- on_attach = on_attach,
+        settings = {
+            -- to enable rust-analyzer settings visit:
+            -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+            ["rust-analyzer"] = {
+                -- enable clippy on save
+                checkOnSave = {
+                    command = "clippy"
+                },
+            }
+        }
+    },
+}
+
+require('rust-tools').setup(opts)

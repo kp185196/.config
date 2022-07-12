@@ -95,4 +95,5 @@ return require('packer').startup(function()
             require('nvim-terminal').setup()
         end,
     }
+    use 'simrat39/rust-tools.nvim'
 end)
