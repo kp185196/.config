@@ -8,4 +8,4 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  nvim
  ```
  
- Run `:PackerSync` within the nvim terminal.
+ :PackerSync within nvim.
