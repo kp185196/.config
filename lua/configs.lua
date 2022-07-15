@@ -17,13 +17,14 @@ set.incsearch = true
 set.scrolloff = 8
 set.signcolumn = "yes:1"
 vim.g.mapleader = " "
-vim.g.gruvbox_italic = 1
+vim.g.despacio_Midnight = 1
+-- vim.g.gitgutter_set_sign_backgrounds = 1
+-- vim.g.gruvbox_italic = 1
 vim.g.gruvbox_contrast_dark = "hard"
-vim.g["gruvbox_sign_column"] = "bg1"
 set.clipboard = "unnamedplus"
 cmd("let g:gitgutter_override_sign_column_highlight=1")
-cmd('colorscheme gruvbox')
-cmd("highlight Normal guibg=#000000")
+vim.g.signify_sign_add = "+"
+cmd('colorscheme despacio')
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
 vim.cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll]]
 -- cmd("set notermguicolors")

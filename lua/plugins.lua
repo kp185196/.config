@@ -3,7 +3,6 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function()
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
-    use 'wojciechkepka/vim-github-dark'
     use {
         'kyazdani42/nvim-tree.lua',
         requires = {
@@ -29,7 +28,6 @@ return require('packer').startup(function()
     }
 
     use 'morhetz/gruvbox'
-    use({ "mhinz/vim-signify", event = 'BufEnter' })
     use({
         "gelguy/wilder.nvim",
         requires = { { "romgrk/fzy-lua-native" } },
@@ -96,4 +94,7 @@ return require('packer').startup(function()
         end,
     }
     use 'simrat39/rust-tools.nvim'
+    use 'AlessandroYorba/Despacio'
+    use 'ayu-theme/ayu-vim'
+    use 'airblade/vim-gitgutter'
 end)
