@@ -1,7 +1,7 @@
 local fn = vim.fn
 local api = vim.api
 local lsp = vim.lsp
-
+local pid = vim.fn.getpid()
 local cmd = vim.cmd -- execute Vim commands
 local utils = require("utils")
 
@@ -16,7 +16,7 @@ end
 lsp_installer.setup {
     -- A list of servers to automatically install if they're not already installed
     ensure_installed = { "bashls", "cssls", "graphql", "html", "jsonls", "sumneko_lua", "tailwindcss",
-        "tsserver", "vetur", "vuels", "rust_analyzer", "eslint", "gopls", "dockerls" },
+        "tsserver", "vetur", "vuels", "rust_analyzer", "eslint", "gopls", "dockerls", "omnisharp" },
     -- Whether servers that are set up (via lspconfig) should be automatically installed if they're not already installed
     automatic_installation = true,
 }
@@ -226,10 +226,14 @@ lspconfig.dockerls.setup {
 lspconfig.tsserver.setup {
     on_attach = custom_attach,
     capabilities = capabilities,
-    handlers = handlers
 }
 
 
+lspconfig.omnisharp.setup {
+    on_attach = custom_attach,
+    capabilities = capabilities,
+    cmd = { "/usr/local/bin/omnisharp-roslyn/run", "--languageserver", "--hostPID", tostring(pid) }
+}
 
 lspconfig.html.setup {
     on_attach = custom_attach,

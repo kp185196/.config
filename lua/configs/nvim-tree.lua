@@ -25,7 +25,10 @@ nvim_tree.setup({
         mappings = {
             custom_only = false,
             list = {
-                -- user mappings go here
+                { key = "l", action = "edit", action_cb = edit_or_open },
+                { key = "L", action = "vsplit_preview", action_cb = vsplit_preview },
+                { key = "h", action = "close_node" },
+                { key = "H", action = "collapse_all", action_cb = collapse_all }
             },
         },
     },
