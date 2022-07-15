@@ -72,7 +72,7 @@ nvim_tree.setup({
             ".DS_Store",
             ".git"
         },
-        exclude = { ".gitignore", ".env" },
+        exclude = { ".gitignore", ".env", ".github" },
     },
     git = {
         enable = true,
