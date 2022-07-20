@@ -35,8 +35,6 @@ cmd("let &t_SI = \"\\e[6 q\"")
 cmd("let &t_EI .= \"\\e[6 q\"")
 vim.api.nvim_set_keymap('i', '(', '()<Left>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '{', '{}<Left>', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('i', '\'', '\'\'<Left>', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('i', '\"', '\"\"<Left>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '[', '[]<Left>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<CR>', ':noh<CR><CR>', { noremap = true, silent = true })
 vim.wo.number = true

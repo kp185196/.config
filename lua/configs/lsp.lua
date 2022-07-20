@@ -61,7 +61,7 @@ local custom_attach = function(client, bufnr)
                 vim.diagnostic.open_float(nil, opts)
             end
 
-            vim.b.diagnostics_pos = cursor_pos
+            -- vim.b.diagnostics_pos = cursor_pos
         end
     })
 
@@ -74,18 +74,18 @@ local custom_attach = function(client, bufnr)
     end
 
     -- The blow command will highlight the current variable and its usages in the buffer.
-    if client.resolved_capabilities.document_highlight then
-        vim.cmd([[
-      hi! link LspReferenceRead Visual
-      hi! link LspReferenceText Visual
-      hi! link LspReferenceWrite Visual
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]]   )
-    end
+    -- if client.resolved_capabilities.document_highlight then
+    --     vim.cmd([[
+    --   hi! link LspReferenceRead Visual
+    --   hi! link LspReferenceText Visual
+    --   hi! link LspReferenceWrite Visual
+    --   augroup lsp_document_highlight
+    --     autocmd! * <buffer>
+    --     autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+    --     autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+    --   augroup END
+    -- ]]   )
+    -- end
 
     if vim.g.logging_level == 'debug' then
         local msg = string.format("Language server %s started!", client.name)
