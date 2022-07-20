@@ -37,8 +37,8 @@ local custom_attach = function(client, bufnr)
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
     vim.keymap.set("n", "<space>q", function() vim.diagnostic.setqflist({ open = true }) end, opts)
     vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-    vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, opts)
     vim.api.nvim_create_autocmd("CursorHold", {
         buffer = bufnr,
         callback = function()
@@ -72,20 +72,6 @@ local custom_attach = function(client, bufnr)
     if client.resolved_capabilities.document_range_formatting then
         vim.keymap.set("x", "<space>f", vim.lsp.buf.range_formatting, opts)
     end
-
-    -- The blow command will highlight the current variable and its usages in the buffer.
-    -- if client.resolved_capabilities.document_highlight then
-    --     vim.cmd([[
-    --   hi! link LspReferenceRead Visual
-    --   hi! link LspReferenceText Visual
-    --   hi! link LspReferenceWrite Visual
-    --   augroup lsp_document_highlight
-    --     autocmd! * <buffer>
-    --     autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-    --     autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-    --   augroup END
-    -- ]]   )
-    -- end
 
     if vim.g.logging_level == 'debug' then
         local msg = string.format("Language server %s started!", client.name)
