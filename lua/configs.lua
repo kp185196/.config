@@ -18,10 +18,11 @@ set.scrolloff = 8
 set.signcolumn = "yes:1"
 vim.g.mapleader = " "
 vim.g.despacio_Midnight = 1
+vim.g.gruvbox_contrast_dark = "hard"
+vim.g.gruvbox_termcolors = 16
 set.clipboard = "unnamedplus"
-cmd("let g:gitgutter_override_sign_column_highlight=1")
-vim.g.signify_sign_add = "+"
-cmd('colorscheme despacio')
+cmd('colorscheme gruvbox')
+cmd("highlight Normal guibg=#1c1c1c")
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
 vim.cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll]]
 vim.cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js Prettier]]

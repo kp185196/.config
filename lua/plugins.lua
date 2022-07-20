@@ -97,4 +97,8 @@ return require('packer').startup(function()
     use 'AlessandroYorba/Despacio'
     use 'ayu-theme/ayu-vim'
     use 'airblade/vim-gitgutter'
+    use({ 'lervag/vimtex'
+    })
+    use 'dag/vim-fish'
+    use 'morhetz/gruvbox'
 end)
