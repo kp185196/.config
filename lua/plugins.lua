@@ -23,7 +23,7 @@ return require('packer').startup(function()
         config = [[require('configs.telescope')]]
     }
 
-    use 'morhetz/gruvbox'
+    use 'gruvbox-community/gruvbox'
     use({
         "gelguy/wilder.nvim",
         requires = { { "romgrk/fzy-lua-native" } },
