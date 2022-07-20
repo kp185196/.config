@@ -21,6 +21,7 @@ vim.g.despacio_Midnight = 1
 vim.g.gruvbox_contrast_dark = "hard"
 vim.g.gruvbox_termcolors = 16
 set.clipboard = "unnamedplus"
+cmd("let g:gitgutter_override_sign_column_highlight=1")
 cmd('colorscheme gruvbox')
 cmd("highlight Normal guibg=#1c1c1c")
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
