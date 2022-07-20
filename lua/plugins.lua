@@ -100,5 +100,4 @@ return require('packer').startup(function()
     use({ 'lervag/vimtex'
     })
     use 'dag/vim-fish'
-    use 'junegunn/fzf.vim'
 end)
