@@ -1,13 +1,9 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function()
-    -- Packer can manage itself
     use 'wbthomason/packer.nvim'
     use {
         'kyazdani42/nvim-tree.lua',
-        requires = {
-            'kyazdani42/nvim-web-devicons', -- For file icon
-        },
         config = [[require('configs.nvim-tree')]]
 
     }
@@ -18,7 +14,6 @@ return require('packer').startup(function()
     }
     use {
         'romgrk/barbar.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons' },
         config = [[require('configs.barbar')]]
     }
     use {
@@ -27,7 +22,7 @@ return require('packer').startup(function()
         config = [[require('configs.telescope')]]
     }
 
-    use 'morhetz/gruvbox'
+    use 'gruvbox-community/gruvbox'
     use({
         "gelguy/wilder.nvim",
         requires = { { "romgrk/fzy-lua-native" } },
@@ -78,11 +73,7 @@ return require('packer').startup(function()
         "folke/trouble.nvim",
         requires = "kyazdani42/nvim-web-devicons",
         config = function()
-            require("trouble").setup {
-                -- your configuration comes here
-                -- or leave it empty to use the default settings
-                -- refer to the configuration section below
-            }
+            require("trouble").setup {}
         end
     }
 
@@ -94,7 +85,9 @@ return require('packer').startup(function()
         end,
     }
     use 'simrat39/rust-tools.nvim'
-    use 'AlessandroYorba/Despacio'
-    use 'ayu-theme/ayu-vim'
     use 'airblade/vim-gitgutter'
+    use({ 'lervag/vimtex'
+    })
+    use 'dag/vim-fish'
+    use 'lukas-reineke/indent-blankline.nvim'
 end)
