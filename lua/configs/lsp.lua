@@ -61,7 +61,7 @@ local custom_attach = function(client, bufnr)
                 vim.diagnostic.open_float(nil, opts)
             end
 
-            -- vim.b.diagnostics_pos = cursor_pos
+            vim.b.diagnostics_pos = cursor_pos
         end
     })
 
